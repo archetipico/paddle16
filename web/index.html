@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <title>paddle16</title>
+  <meta name="title" content="paddle16">
+  <meta name="description" content="A two-player paddle game written in NASM, booting on your browser.">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#06060a">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://archetipico.github.io/paddle16/">
+  <meta property="og:title" content="paddle16">
+  <meta property="og:description" content="A two-player paddle game written in NASM, booting on your browser.">
+  <meta property="og:image" content="https://archetipico.github.io/paddle16/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="paddle16">
+  <meta name="twitter:description" content="A two-player paddle game written in NASM, booting on your browser.">
+  <meta name="twitter:image" content="https://archetipico.github.io/paddle16/og.png">
+  <link rel="canonical" href="https://archetipico.github.io/paddle16/">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="machine">
+    <h1 class="title">paddle16</h1>
+    <p class="subtitle">a two-player paddle game written in NASM</p>
+
+    <div class="crt">
+      <div class="crt__bezel">
+        <div id="screen" class="crt__screen">
+          <div class="crt__text"></div>
+          <canvas class="crt__canvas"></canvas>
+        </div>
+        <div id="overlay" class="overlay" data-state="idle">
+          <button id="power" class="power" type="button" disabled>
+            <span class="power__ring"></span>
+            <span class="power__label">loading</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bar">
+      <p class="keys">
+        <b>W</b>/<b>S</b> left
+        <span>&middot;</span>
+        <b>&uarr;</b>/<b>&darr;</b> right
+        <span>&middot;</span>
+        <b>space</b> select
+        <span>&middot;</span>
+        <b>P</b> pause
+      </p>
+      <span class="bar__sp"></span>
+      <button id="full" class="btn btn--icon" type="button" disabled aria-label="fullscreen">&#9974;</button>
+      <button id="reset" class="btn btn--icon" type="button" disabled aria-label="reset">&#8635;</button>
+    </div>
+
+    <footer class="foot">
+      <a href="https://archetipico.github.io" target="_blank" rel="noopener">home</a>
+      <span>&middot;</span>
+      <a href="https://github.com/archetipico/paddle16" target="_blank" rel="noopener">source</a>
+    </footer>
+  </main>
+
+  <div class="pad" aria-hidden="true">
+    <div class="pad__cluster pad__cluster--l">
+      <button class="pad__btn" data-k="w" aria-label="left paddle up">&#9650;</button>
+      <button class="pad__btn" data-k="s" aria-label="left paddle down">&#9660;</button>
+    </div>
+    <div class="pad__cluster pad__cluster--mid">
+      <button class="pad__btn pad__btn--sm" data-k="space">select</button>
+      <button class="pad__btn pad__btn--sm" data-k="p">pause</button>
+    </div>
+    <div class="pad__cluster pad__cluster--r">
+      <button class="pad__btn" data-k="up" aria-label="right paddle up">&#9650;</button>
+      <button class="pad__btn" data-k="down" aria-label="right paddle down">&#9660;</button>
+    </div>
+  </div>
+
+  <noscript>
+    <style>
+      .machine, .pad { display: none; }
+      .ns {
+        max-width: 30rem;
+        margin: 5rem auto;
+        padding: 0 1.5rem;
+        text-align: center;
+        font-family: var(--display);
+        font-size: 1.6rem;
+        color: var(--amber);
+      }
+    </style>
+    <p class="ns">paddle16 needs JavaScript and WebAssembly. Enable them and reload.</p>
+  </noscript>
+
+  <script src="vendor/v86/libv86.js"></script>
+  <script src="boot.js"></script>
+</body>
+</html>
